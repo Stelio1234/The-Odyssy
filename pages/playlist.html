@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff3e0;
+            cursor: url("/arrowhead-rounded-outline.png"), auto;
+        }
+        .header {
+            background-color: #8d6e63;
+            color: black;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            cursor: url("/arrowhead-rounded-outline.png"), auto;
+        }
+        .playlist {
+            margin-top: 70px;
+            padding: 20px;
+        }
+        html {
+            cursor: url("/arrowhead-rounded-outline.png"), auto;
+            height: 100%;
+        }
+        h2 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #d7ccc8;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #8d6e63;
+            color: white;
+            padding: 20px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            left: 20px;
+            bottom: 20px;
+            position: relative;
+            marign-bottom: 100px;
+            cursor: url("/arrowhead-rounded-outline.png"), auto;
+        }
+        button:hover {
+            background-color: #6b4d3e;
+            cursor: url("arrowhead-rounded-outline.png");
+            left: 20px;
+            bottom: 25px;
+        }
+        img {
+            border-radius: 8px;
+            width: 230px;
+            height: 230px;
+            }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Playlist</h1>
+    </div>
+    <div class="playlist">
+        <ul>
+            <img src="/The-Odyssey.png">
+            <li>Polyphemus by Jorge Rivera-Herrans, Armando Julián & Steven Dookie</li>
+            <li>Home by Machine Gun Kelly, X Ambassadors & Bebe Rexha</li>
+            <li>Song 3</li>
+            <li>Song 4</li>
+            <li>Song 5</li>
+        </ul>
+    </div>
+    <button id="backButton">Back</button>  
+</body>
+    <script>
+        const backButton = document.getElementById('backButton');
+
+        backButton.addEventListener('click', () => {
+            window.location.href = '/main.html';
+        });
+    </script>
+</html>

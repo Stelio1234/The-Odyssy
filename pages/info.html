@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Info</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff3e0;
+      cursor: url("/arrowhead-rounded-outline.png"), auto;
+      height: 100%;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    header {
+      background-color: #8d6e63;
+      color: black;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .textbox-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      gap: 10px;
+      margin-top: 100px;
+      padding: 50px;
+    }
+
+    .textbox {
+      background-color: #d7ccc8;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .more-info-button {
+      padding: 10px 20px;
+      width: 70px;
+      height: 15px;
+      background-color: #8d6e63;
+      color: white;
+      border: none;
+      transition: background-color 0.3s;
+      border-radius: 25px;
+      text-align: center;
+    }
+
+    .more-info-button:hover {
+      background-color: #6b4d3e;
+      cursor: url("arrowhead-rounded-outline.png");
+    }
+
+    .info-text {
+      display: none;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      border-radius: 15px;
+      box-shadow: 1px 1px 10px black;
+
+    }
+
+    button {
+      background-color: #8d6e63;
+      color: white;
+      padding: 20px 30px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      position: fixed;
+      marign-bottom: 100px;
+      cursor: url("/arrowhead-rounded-outline.png"), auto;
+      bottom: 20px;
+      left: 20px;
+    }
+
+    button:hover {
+      background-color: #6b4d3e;
+      cursor: url("arrowhead-rounded-outline.png");
+      left: 150px;
+      bottom: 105px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>All Info</h1>
+    <p>This page has all of the info from each of the pages.</p>
+    <p>*THIS PAGE IS JUST AN EASYERWAY TO SEE THE IOFO*</p>
+  </header>
+  <div class="textbox-grid">
+    <div class="textbox">
+      <h2>Polyphemus</h2>
+      <h3>How the song ties to the story</h3>
+      <p>This song connects to the story, when Odysseus and some of his crew went to invstigate to see if Polyphemus
+        (The cyclops name)
+        was friend or foe. The song tells about how they found the cave and made Polyphemus angry.
+        The how Odysseus offerd him wine in extange that they get to stay alive. The song in general discribes alot of
+        the interaction bettween Odysseus and Polyphemus. The song also mention when Odysseus said his name was
+        nohbody.</p>
+      <div class="more-info-button" <button id="more-info-button">More info</button>
+      </div>
+      <div class="info-text" style="display: none;">
+        <p>Cyclops, try some wine.
+          Here’s liquor to wash down your scraps of men.
+          Taste it, and see the kind of drink we carried
+          under our planks. I meant it for an offering
+          if you would help us home. But you are mad,
+          unbearable, a bloody monster! After this,
+          will any other traveler come to see you?’‘Cyclops,
+          you ask my honorable name? Remember
+          the gift you promised me, and I shall tell you.
+          My name is Nohbdy: mother, father, and friends,
+          everyone calls me Nohbdy.’</p>
+      </div>
+    </div>
+    <!----Next ------>
+    <div class="textbox">
+      <h2>Polyphemus</h2>
+      <h3>How the song ties to the story</h3>
+      <p>This song connects to the story, when Odysseus and some of his crew went to invstigate to see if Polyphemus
+        (The cyclops name)
+        was friend or foe. The song tells about how they found the cave and made Polyphemus angry.
+        The how Odysseus offerd him wine in extange that they get to stay alive. The song in general discribes alot of
+        the interaction bettween Odysseus and Polyphemus. The song also mention when Odysseus said his name was
+        nohbody.</p>
+      <div class="more-info-button" <button id="more-info-button">More info</button>
+      </div>
+      <div class="info-text" style="display: none;">
+        <p>Cyclops, try some wine.
+          Here’s liquor to wash down your scraps of men.
+          Taste it, and see the kind of drink we carried
+          under our planks. I meant it for an offering
+          if you would help us home. But you are mad,
+          unbearable, a bloody monster! After this,
+          will any other traveler come to see you?’‘Cyclops,
+          you ask my honorable name? Remember
+          the gift you promised me, and I shall tell you.
+          My name is Nohbdy: mother, father, and friends,
+          everyone calls me Nohbdy.’</p>
+      </div>
+    </div>
+    <button id="backButton">Back</button>
+  </div>
+</body>
+<script>
+  const backButton = document.getElementById('backButton');
+
+  backButton.addEventListener('click', () => {
+    window.location.href = '/main.html';
+  });
+  const button = document.querySelector('.more-info-button');
+  const infoText = document.querySelector('.info-text');
+
+  button.addEventListener('mouseenter', () => {
+    infoText.style.display = 'block';
+  });
+
+  button.addEventListener('mouseleave', () => {
+    infoText.style.display = 'none';
+  });
+</script>
+
+</html>
