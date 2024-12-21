@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Song 2</title>
+  <style>
+    .body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      background-color: white;
+    }
+
+    .musicbox {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      position: fixed;
+      box-shadow: 1px 1px 10px black;
+      border-radius: 15px;
+      width: 90%;
+      height: 85%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .textbox {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      bottom: 400px;
+    }
+
+    .music-controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    }
+
+    html {
+      cursor: url("/arrowhead-rounded-outline.png"), auto;
+      height: 100%;
+    }
+
+    .progress-bar {
+      width: 300px;
+      height: 20px;
+      background-color: #ccc;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 30px;
+    }
+
+    .progress {
+      width: 0;
+      height: 100%;
+      background-color: #8d6e63;
+      border-radius: 30px;
+    }
+
+    button {
+      background-color: #8d6e63;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+
+    button:hover {
+      background-color: #6b4d3e;
+    }
+
+    .textbox {
+      margin-top: 0;
+    }
+
+    .next-page {
+      position: fixed;
+      bottom: 25px;
+      right: 60px;
+      padding: 20px;
+    }
+
+    .next-page:hover {
+      background-color: #6b4d3e;
+      bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="body">
+    <div class="musicbox">
+      <h1>Home</h1>
+      <p>Machine Gun Kelly, X Ambassadors & Bebe Rexha</p>
+      <div class="music-controls">
+        <button id="play-button">Play</button>
+        <button id="pause-button">Pause</button>
+      </div>
+      <div class="progress-bar" id="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+      <div class="textbox">
+        <h1>How the song ties to the story</h1>
+        <p>The song’s lyrics reflect resilience in the face of difficulties, which aligns with Odysseus' struggles throughout his journey. For example: "Someone take me home" conveys Odysseus' desperation as he faces relentless challenges, like the wrath of Poseidon, the dangers of Scylla and Charybdis, and the temptations of Circe and Calypso.</p>
+        <button id="next-page" class="next-page">Next Page</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const audio = new Audio('/Music Files/Home - Machine Gun Kelly, X Ambassadors & Bebe Rexha (Lyrics) 🎵.mp3');
+    const playButton = document.getElementById('play-button');
+    const pauseButton = document.getElementById('pause-button');
+    const progressBar = document.getElementById('progress');
+    const progressBarContainer = document.getElementById('progress-bar');
+
+    playButton.addEventListener('click', () => {
+      audio.play().catch((error) => {
+        console.error('Error playing audio:', error);
+      });
+    });
+
+    pauseButton.addEventListener('click', () => {
+      audio.pause();
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      const progress = (audio.currentTime / audio.duration) * 100;
+      progressBar.style.width = progress + '%';
+    });
+
+    progressBarContainer.addEventListener('click', (e) => {
+      const clickPosition = e.offsetX / progressBarContainer.offsetWidth;
+      audio.currentTime = clickPosition * audio.duration;
+    });
+
+    audio.addEventListener('ended', () => {
+      progressBar.style.width = '0%';
+    });
+
+    const startButton = document.getElementById('next-page');
+
+    startButton.addEventListener('click', () => {
+      window.location.href = 'song3.html';
+    });
+  </script>
+</body>
+
+</html>

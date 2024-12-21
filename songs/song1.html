@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polyphemus by Jorge Rivera-Herrans, Armando Julián & Steven Dookie</title>
+  <style>
+    .body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      background-color: white;
+      cursor: url("arrowhead-rounded-outline.png"), auto;
+    }
+
+    .musicbox {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      position: fixed;
+      box-shadow: 1px 1px 10px black;
+      border-radius: 15px;
+      width: 90%;
+      height: 85%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: url("arrowhead-rounded-outline.png"), auto;
+    }
+
+    .textbox {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      bottom: 400px;
+    }
+
+    .textbox p {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      text-align: center;
+      text-wrap: balance;
+
+    }
+
+    .music-controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .progress-bar {
+      width: 300px;
+      height: 20px;
+      background-color: #ccc;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 30px;
+    }
+
+    .progress {
+      width: 0;
+      height: 100%;
+      background-color: #8d6e63;
+      border-radius: 30px;
+    }
+
+    button {
+      background-color: #8d6e63;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    .more-info-button {
+      padding: 10px 20px;
+      background-color: #8d6e63;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 25px;
+    }
+
+    .more-info-button:hover {
+      background-color: #6b4d3e;
+      cursor: url("arrowhead-rounded-outline.png"), auto;
+    }
+
+    .info-text {
+      display: none;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      border-radius: 15px;
+      box-shadow: 1px 1px 10px black;
+
+    }
+
+
+
+    button:hover {
+      background-color: #8d6e63;
+      cursor: url("arrowhead-rounded-outline.png"), auto;
+    }
+
+    .textbox {
+      margin-top: 0;
+    }
+
+    .next-page {
+      position: fixed;
+      bottom: 25px;
+      right: 60px;
+      padding: 20px;
+    }
+
+    .next-page:hover {
+      background-color: #6b4d3e;
+      bottom: 30px;
+      cursor: url("arrowhead-rounded-outline.png"), auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="body">
+    <div class="musicbox">
+      <h1>Polyphemus</h1>
+      <p>Jorge Rivera-Herrans, Armando Julián & Steven Dookie</p>
+      <div class="music-controls">
+        <button id="play-button">Play</button>
+        <button id="pause-button">Pause</button>
+      </div>
+      <div class="progress-bar" id="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+      <div class="textbox">
+        <h1>How the song ties to the story</h1>
+        <p>This song connects to the story, when Odysseus and some of his crew went to invstigate to see if Polyphemus
+          (The cyclops name)
+          was friend or foe. The song tells about how they found the cave and made Polyphemus angry.
+          The how Odysseus offerd him wine in extange that they get to stay alive. The song in general discribes alot of
+          the interaction bettween Odysseus and Polyphemus. The song also mention when Odysseus said his name was
+          nohbody. Hover your mouse over the "More info" button to see the text
+          evidence.</p>
+        <button id="next-page" class="next-page">Next Page</button>
+        <button class="more-info-button">More Info</button>
+        <div class="info-text" style="display: none;">
+          <p>Cyclops, try some wine.
+            Here’s liquor to wash down your scraps of men.
+            Taste it, and see the kind of drink we carried
+            under our planks. I meant it for an offering
+            if you would help us home. But you are mad,
+            unbearable, a bloody monster! After this,
+            will any other traveler come to see you?’‘Cyclops,
+            you ask my honorable name? Remember
+            the gift you promised me, and I shall tell you.
+            My name is Nohbdy: mother, father, and friends,
+            everyone calls me Nohbdy.’</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const audio = new Audio('/Music Files/Jorge Rivera-Herrans, Armando Julián & Steven Dookie - Polyphemus.mp3');
+    const playButton = document.getElementById('play-button');
+    const pauseButton = document.getElementById('pause-button');
+    const progressBar = document.getElementById('progress');
+    const progressBarContainer = document.getElementById('progress-bar');
+
+    playButton.addEventListener('click', () => {
+      audio.play().catch((error) => {
+        console.error('Error playing audio:', error);
+      });
+    });
+
+    pauseButton.addEventListener('click', () => {
+      audio.pause();
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      const progress = (audio.currentTime / audio.duration) * 100;
+      progressBar.style.width = progress + '%';
+    });
+
+    progressBarContainer.addEventListener('click', (e) => {
+      const clickPosition = e.offsetX / progressBarContainer.offsetWidth;
+      audio.currentTime = clickPosition * audio.duration;
+    });
+
+    audio.addEventListener('ended', () => {
+      progressBar.style.width = '0%';
+    });
+
+    const startButton = document.getElementById('next-page');
+
+    startButton.addEventListener('click', () => {
+      window.location.href = 'song2.html';
+    });
+    const button = document.querySelector('.more-info-button');
+    const infoText = document.querySelector('.info-text');
+
+    button.addEventListener('mouseenter', () => {
+      infoText.style.display = 'block';
+    });
+
+    button.addEventListener('mouseleave', () => {
+      infoText.style.display = 'none';
+    });
+
+  </script>
+</body>
+
+</html>
